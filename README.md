@@ -3,28 +3,41 @@ Sleep-Async
 
 Non blocking asynchronous sleep, with watching condition.
 
-The library has two method:
+The library has method:
 
 ### sleep(timeout, done)
 * `timeout` - sleep time in milisecond,
 * `done` - callback runned always after sleep.
 
-### sleep(condition, timeout, done)
+### sleepWithCondition(condition, timeout, done)
 * `condition` - condition function has checked on any sleep cycle. When condition is true, the sleep is done.
 * `timeout` - max timeout to sleep. 
 * `done` - callback runned always after sleep.
+
+### sleepWithCondition(condition, options, done)
+* `condition` - condition function has checked on any sleep cycle. When condition is true, the sleep is done.
+* `options` - advanced options for sleep.
+  + full options example:
+  ```javascript
+    var options = {
+      sleep: 1000,
+      interval: 10
+    };
+  ```
+* `done` - callback runned always after sleep.
+
 
 
 ## Quick exaples
 
 ### Required
-```
+```javascript
 var sleep = require('sleep-async')();
 ```
 
 ### With `sleep(timeout, done)`
 
-```
+```javascript
 sleep.sleep(5000, function(){
   stopTime = new Date().getTime();
   console.log('Difference: '+((stopTime-startTime)/1000)+' [s]');
@@ -32,9 +45,9 @@ sleep.sleep(5000, function(){
 
 ```
 
-### With `sleep(condition, timeout, done)`
+### With `sleepWithCondition(condition, timeout, done)`
 
-```
+```javascript
 sleep.sleepWithCondition(function(){
     return collection.length >= 10;
   },
@@ -43,6 +56,24 @@ sleep.sleepWithCondition(function(){
     stopTime = new Date().getTime();
     console.log('Difference: '+((stopTime-startTime)/1000)+' [s]');
 });
+```
+
+### With `sleepWithCondition(donfition, options, done)`
+
+```javascript
+var options = {
+  sleep: 5000,
+  interval: 2500
+};
+
+sleep.sleepWithCondition(function(){
+    return collection.length >= 10;
+  },
+  options,
+  function(){
+    stopTime = new Date().getTime();
+    console.log('Difference: '+((stopTime-startTime)/1000)+' [s]');
+  });
 ```
 
 ## Examples
