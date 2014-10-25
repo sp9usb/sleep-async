@@ -13,7 +13,7 @@ describe('sleep.test', function() {
       var stopTime = null;
       before(function (done) {
         startTime = new Date().getTime();
-        sleep.sleep(5000, function(){
+        sleep.sleep(500, function(){
           stopTime = new Date().getTime();
           done();
         });
@@ -21,7 +21,7 @@ describe('sleep.test', function() {
 
       it('Should wake up after sleep time.', function () {
         var difference = stopTime-startTime;
-        expect(difference).to.be.lessThan(5000+500);
+        expect(difference).to.be.greaterThan(500).and.lessThan(600);
       });
 
     });
@@ -37,7 +37,7 @@ describe('sleep.test', function() {
             var conditionResult = collection.length > 97;
             return conditionResult;
           },
-          5000,
+          500,
           function(){
             stopTime = new Date().getTime();
             done();
@@ -49,9 +49,90 @@ describe('sleep.test', function() {
 
       it('Should wake up when condition is true.', function () {
         var difference = stopTime-startTime;
-        expect(difference).to.be.lessThan(5000);
+        expect(difference).to.be.lessThan(500);
       });
 
     });
+
+    describe('When sleep with false condition.', function () {
+      var startTime = null;
+      var stopTime = null;
+      before(function (done) {
+        startTime = new Date().getTime();
+        sleep.sleepWithCondition(
+          function(){
+            return true == false;
+          },
+          500,
+          function(){
+            stopTime = new Date().getTime();
+            done();
+          });
+      });
+
+      it('Should wake up after sleep time.', function () {
+        var difference = stopTime-startTime;
+        expect(difference).to.be.greaterThan(500).and.lessThan(600);
+      });
+
+    });
+
+    describe('When sleep with false condition.', function () {
+      var startTime = null;
+      var stopTime = null;
+      before(function (done) {
+
+        var options = {
+          sleep: 500
+        };
+
+        startTime = new Date().getTime();
+        sleep.sleepWithCondition(
+          function(){
+            return true == false;
+          },
+          options,
+          function(){
+            stopTime = new Date().getTime();
+            done();
+          });
+      });
+
+      it('Should wake up after sleep time options.', function () {
+        var difference = stopTime-startTime;
+        expect(difference).to.be.greaterThan(500).and.lessThan(600);
+      });
+
+    });
+
+    describe('When sleep with condition and interval has changed.', function () {
+      var startTime = null;
+      var stopTime = null;
+      before(function (done) {
+
+        var options = {
+          interval: 1000,
+          sleep: 500
+        };
+
+        startTime = new Date().getTime();
+        sleep.sleepWithCondition(
+          function(){
+            return true == false;
+          },
+          options,
+          function(){
+            stopTime = new Date().getTime();
+            done();
+          });
+      });
+
+      it('Should wake up after sleep time with interval options.', function () {
+        var difference = stopTime-startTime;
+        expect(difference).to.be.greaterThan(1000).and.lessThan(1500);
+      });
+
+    });
+
   });
 });

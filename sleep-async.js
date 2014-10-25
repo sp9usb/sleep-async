@@ -13,12 +13,32 @@ module.exports = exports = function(){
     }, interval);
   }
 
+  function isOptions(optionCandidate){
+    return typeof(optionCandidate) === 'object';
+  }
+
+  function hasValue(value){
+    return value !== 'undefined' && value !== 'null';
+  }
+
   return {
     sleep: function(timeout, done){
       sleep(timeout, null, 10, done);
     },
-    sleepWithCondition: function(condition, timeout, done){
-      sleep(timeout, condition, 10, done);
+    sleepWithCondition: function(condition, optionsOrTimeout, done){
+      var timeout = 10;
+      var interval = 10;
+      if (isOptions(optionsOrTimeout)){
+        if (hasValue(optionsOrTimeout.sleep)){
+          timeout = optionsOrTimeout.sleep;
+        }
+        if (hasValue(optionsOrTimeout.interval)) {
+          interval = optionsOrTimeout.interval;
+        }
+      } else {
+        timeout = optionsOrTimeout;
+      }
+      sleep(timeout, condition, interval, done);
     }
   };
 };
