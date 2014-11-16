@@ -58,7 +58,7 @@ sleep.sleepWithCondition(function(){
 });
 ```
 
-### With `sleepWithCondition(donfition, options, done)`
+### With `sleepWithCondition(condition, options, done)`
 
 ```javascript
 var options = {
