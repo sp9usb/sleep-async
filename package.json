@@ -1,14 +1,15 @@
 {
   "name": "sleep-async",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Non blocking asynchronous sleep, with watching condition.",
   "main": "sleep-async.js",
   "scripts": {
-    "test": "mocha test --reporter spec --timeout 10000"
+    "test": "mocha test --reporter spec --timeout 10000",
+    "test:watch": "npm run test -- -w"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kamil4521/sleep-async.git"
+    "url": "https://github.com/sp9usb/sleep-async.git"
   },
   "keywords": [
     "sleep",
@@ -18,11 +19,10 @@
   "author": "Giskard Solutions Kamil Myśliwiec",
   "license": "LGPL-3",
   "bugs": {
-    "url": "https://github.com/kamil4521/sleep-async/issues"
+    "url": "https://github.com/sp9usb/sleep-async/issues"
   },
-  "homepage": "https://github.com/kamil4521/sleep-async",
+  "homepage": "https://github.com/sp9usb/sleep-async",
   "devDependencies": {
-    "chai": "~1.9.1",
     "mocha": "~1.20.1"
   }
 }
