@@ -1,9 +1,9 @@
 module.exports = exports = function(){
 
   function sleep(timeout, condition, interval, done){
-    var startTimeInMilisecond = new Date().getTime();
+    const startTimeInMilisecond = new Date().getTime();
     setTimeout(function repeater(){
-      var totalTimeHasExpiredOrConditionIsTrue = ((startTimeInMilisecond + timeout) < (new Date().getTime())) ||
+      let totalTimeHasExpiredOrConditionIsTrue = ((startTimeInMilisecond + timeout) < (new Date().getTime())) ||
         (condition && typeof(condition) === 'function' &&  condition());
       if(totalTimeHasExpiredOrConditionIsTrue){
         done();
@@ -17,22 +17,18 @@ module.exports = exports = function(){
     return typeof(optionCandidate) === 'object';
   }
 
-  function hasValue(value){
-    return value !== 'undefined' && value !== 'null';
-  }
-
   return {
     sleep: function(timeout, done){
       sleep(timeout, null, 10, done);
     },
     sleepWithCondition: function(condition, optionsOrTimeout, done){
-      var timeout = 10;
-      var interval = 10;
+      let timeout = 10;
+      let interval = 10;
       if (isOptions(optionsOrTimeout)){
-        if (hasValue(optionsOrTimeout.sleep)){
+        if (optionsOrTimeout.sleep){
           timeout = optionsOrTimeout.sleep;
         }
-        if (hasValue(optionsOrTimeout.interval)) {
+        if (optionsOrTimeout.interval) {
           interval = optionsOrTimeout.interval;
         }
       } else {
