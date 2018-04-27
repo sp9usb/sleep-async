@@ -14,7 +14,8 @@
   "keywords": [
     "sleep",
     "async",
-    "sleep-async"
+    "sleep-async",
+    "Promise"
   ],
   "author": "Giskard Solutions Kamil Myśliwiec",
   "license": "LGPL-3",

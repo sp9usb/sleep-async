@@ -19,18 +19,19 @@ describe('Promise sleep-async tests:', function(){
   
       let collection = [];
       const startTime = new Date().getTime();
-  
+
       const sleepWithConditionPromise = sleepPromise.sleepWithCondition(
-          function condition(){
-            const conditionResult = collection.length > 97;
-            return conditionResult;
-          },
-          500)
-        .then(() => new Date().getTime())
-  
-        for(let i = 0; i < 100; i++){
-          collection.push(i);
-        }
+        function condition() {
+          console.log('Checking collection size');
+          const conditionResult = collection.length > 97;
+          return conditionResult;
+        },
+        500)
+      .then(() => new Date().getTime());
+
+      for (let i = 0; i < 100; i++) {
+        collection.push(i);
+      }
 
       const stopTime = await sleepWithConditionPromise;
 
@@ -39,7 +40,7 @@ describe('Promise sleep-async tests:', function(){
     });
   
   });
-  
+   
   describe('When sleep with false condition', function () {
     it('then should wake up after sleep time.', async function () {
   
