@@ -1,8 +1,8 @@
 {
   "name": "sleep-async",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Non blocking asynchronous sleep, with watching condition.",
-  "main": "sleep-async.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test --reporter spec --timeout 10000",
     "test:watch": "npm run test -- -w"
