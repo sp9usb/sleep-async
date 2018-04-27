@@ -5,25 +5,33 @@ Non blocking asynchronous sleep, with watching condition.
 
 The library have two version:
 + Classic - standard methods with callback function
+  - How to initialize object? e.g.
+    ```
+    const sleep = require('sleep-async')();
+    ```
 + Promise - the methods returns Promise object
+  - How to initialize object? e.g.
+    ```
+    const sleep = require('sleep-async')().Promise;
+    ```
 
 # Classic library has methods:
 
-- ### sleep(timeout, done)
+- sleep(timeout, done)
   + `timeout` - sleep time in milisecond,
   + `done` - callback runned always after sleep.
 
-- ### sleepWithCondition(condition, timeout, done)
+- sleepWithCondition(condition, timeout, done)
   + `condition` - condition function has checked on any sleep cycle. When condition is true, the sleep is done.
   + `timeout` - max timeout to sleep. 
   + `done` - callback runned always after sleep.
 
-- ### sleepWithCondition(condition, options, done)
+- sleepWithCondition(condition, options, done)
   + `condition` - condition function has checked on any sleep cycle. When condition is true, the sleep is done.
   + `options` - advanced options for sleep.
     * full options example:
       ```javascript
-        var options = {
+        const options = {
           sleep: 1000,
           interval: 10
         };
@@ -33,12 +41,12 @@ The library have two version:
 
 ## Quick exaples
 
-- ### Required
+- Required
   ```javascript
-  var sleep = require('sleep-async')();
+  const sleep = require('sleep-async')();
   ```
 
-- ### With `sleep(timeout, done)`
+- With `sleep(timeout, done)`
 
   ```javascript
   sleep.sleep(5000, function(){
@@ -48,7 +56,7 @@ The library have two version:
 
   ```
 
-- ### With `sleepWithCondition(condition, timeout, done)`
+- With `sleepWithCondition(condition, timeout, done)`
 
   ```javascript
   sleep.sleepWithCondition(function(){
@@ -61,10 +69,10 @@ The library have two version:
   });
   ```
 
-- ### With `sleepWithCondition(condition, options, done)`
+- With `sleepWithCondition(condition, options, done)`
 
   ```javascript
-  var options = {
+  const options = {
     sleep: 5000,
     interval: 2500
   };
@@ -82,19 +90,19 @@ The library have two version:
 
 # Promise library has methods:
 
-- ### sleep(timeout) : Promise
+- sleep(timeout) : Promise
   + `timeout` - sleep time in milisecond
 
-- ### sleepWithCondition(condition, timeout) : Promise
+- sleepWithCondition(condition, timeout) : Promise
   + `condition` - condition function has checked on any sleep cycle. When condition is true, the sleep is done.
   + `timeout` - max timeout to sleep. 
 
-- ### sleepWithCondition(condition, options) : Promise
+- sleepWithCondition(condition, options) : Promise
   + `condition` - condition function has checked on any sleep cycle. When condition is true, the sleep is done.
   + `options` - advanced options for sleep.
     * full options example:
       ```javascript
-        var options = {
+        const options = {
           sleep: 1000,
           interval: 10
         };
@@ -103,12 +111,12 @@ The library have two version:
 
 ## Quick exaples
 
-- ### Required
+- Required
   ```javascript
-  var sleep = require('sleep-async')().Promise;
+  const sleep = require('sleep-async')().Promise;
   ```
 
-- ### With `sleep(timeout)`
+- With `sleep(timeout)`
 
   ```javascript
   const startTime = new Date().getTime();
@@ -119,7 +127,7 @@ The library have two version:
 
   ```
 
-- ### With `sleepWithCondition(condition, timeout)`
+- With `sleepWithCondition(condition, timeout)`
 
   ```javascript
   const startTime = new Date().getTime();
@@ -133,7 +141,7 @@ The library have two version:
     .then(stopTime => console.log('Difference: '+((stopTime-startTime)/1000)+' [s]'));
   ```
 
-- ### With `sleepWithCondition(condition, options)`
+- With `sleepWithCondition(condition, options)`
 
   ```javascript
   const options = {

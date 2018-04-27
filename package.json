@@ -1,6 +1,6 @@
 {
   "name": "sleep-async",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Non blocking asynchronous sleep, with watching condition.",
   "main": "index.js",
   "scripts": {
