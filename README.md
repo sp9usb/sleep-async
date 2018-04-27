@@ -1,5 +1,7 @@
-Sleep-Async
+Sleep-Async ![travis-ci]
 ===========
+
+[travis-ci]: https://travis-ci.org/sp9usb/sleep-async.svg?branch=master
 
 Non blocking asynchronous sleep, with watching condition.
 
