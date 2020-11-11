@@ -1,4 +1,4 @@
-Sleep-Async ![travis-ci]
+Sleep-Async ![Node.js CI](https://github.com/sp9usb/sleep-async/workflows/Node.js%20CI/badge.svg)
 ===========
 
 [travis-ci]: https://travis-ci.org/sp9usb/sleep-async.svg?branch=master
